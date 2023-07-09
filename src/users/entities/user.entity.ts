@@ -13,6 +13,7 @@ export class User {
   password: string;
   @Prop()
   type: string;
+  _doc: any;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

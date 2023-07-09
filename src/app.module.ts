@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { UsersModule } from './users/users.module';
       'mongodb+srv://victorh5900:IkTouXFfrCEO4Mfu@demarcotest.czbfbih.mongodb.net/',
     ),
     UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
