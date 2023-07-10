@@ -1,33 +1,21 @@
 <template>
   <div id="app">
+    <Header />
     <router-view/>
     <Footer />
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 export default {
   name: 'App',
-  components: { Footer }
+  components: { Header, Footer }
 }
 </script>
 
 
-<style>
-#app {
-  height: 100vh;
-  display: flex;
-  position: relative;
-  background-color: #212121;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style lang="scss" scoped>
+@import '@/assets/scss/_app.scss';
 </style>
