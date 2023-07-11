@@ -33,13 +33,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.demarco-input {
-  display: grid;
-  gap: 8px;
-  input {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #000;
-  }
-}
+@import '@/assets/scss/components/_input.scss';
 </style>

@@ -59,9 +59,18 @@ export default {
         this.$http.post('/users', data)
           .then(res => {
             if (res.status === 201) {
-              alert('Usuário cadastrado com sucesso!')
+              this.$swal({
+                icon: 'success',
+                title: 'Usuário cadastrado com sucesso!'
+              })
               this.$router.push({ name: 'home' })
             }
+          })
+          .catch(err => {
+            this.$swal({
+              icon: 'error',
+              title: err
+            })
           })
       }
     },

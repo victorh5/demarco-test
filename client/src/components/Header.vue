@@ -1,7 +1,6 @@
 <template>
   <header class="header-tab">
     <img src="@/assets/logo.png" style="width: 150px;">
-    <!-- <p style="color: #fff;">{{$store.getters.userIsLogged}}</p> -->
     <demarco-button
       v-if="$store.getters.userIsLogged"
       @callback="handleLogout"
@@ -28,13 +27,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header-tab {
-  width: 100%;
-  max-width: 1280px;
-  margin-inline: auto;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+@import '@/assets/scss/components/_header.scss';
 </style>

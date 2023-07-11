@@ -43,10 +43,26 @@ export default {
       this.validForm()
       if (this.errors.length === 0) {
         const result = await this.loginUser(this.user)
-        // console.log(t)
         if (result === 200) {
+          this.$http.get('/auth/profile')
+            .then(res => {
+              if (res.status === 200) {
+                this.$store.commit('set_user_info', res.data)
+              }
+            })
+            .catch(err => {
+              this.$swal({
+                icon: 'error',
+                title: err
+              })
+            })
           this.$router.push({ name: 'evaluate' })
-        } else alert('Credenciais inválidas')
+        } else {
+          this.$swal({
+            icon: 'error',
+            title: 'Credenciais inválidas'
+          })
+        }
       }
     },
     validForm() {

@@ -33,9 +33,8 @@ export default new Vuex.Store({
       return api.post(url, payload)
         .then(res => {
           if (res.status === 200) {
-            const { access_token, user_info } = res.data
-            context.commit('set_token', access_token)
-            context.commit('set_user_info', user_info)
+            context.commit('set_token', res.data.access_token)
+            api.defaults.headers.common.Authorization = `Bearer ${res.data.access_token}`
             return res.status
           }
         })

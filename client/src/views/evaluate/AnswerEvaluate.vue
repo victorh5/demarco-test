@@ -1,23 +1,17 @@
 <template>
   <div class="answer-evaluate">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="answers-header">
       <h1>{{ this.evaluate.title }}</h1>
       <p>Data: {{ this.getDay }}</p>
     </div>
     <form @submit.prevent="submitForm" class="evaluate-form">
-      <p v-show="errors.length" ref="error" style="margin-top: 16px;">
-        <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
-        <ul style="padding-left: 40px; margin-top: 4px;">
-          <li v-for="(error, idx) in errors" :key="idx">{{ error }}</li>
-        </ul>
-      </p>
       <div
         v-for="(question, idx) in this.evaluate.question"
         :key="question._id"
       >
         <p>{{idx + 1}}° - {{ question.text }}</p>
         <div
-          style="display: flex; gap: 8px; padding-left: 8px;"
+          class="question-options"
           v-for="(option, i) in question.options"
           :key="i"
         >
@@ -87,6 +81,7 @@ export default {
               title: 'Respostas submetidas',
               text: `Nesta avaliação sua nota foi: ${totalGrade}! Obrigado por realizar a avaliação...`
             })
+            this.$router.push({ name: 'evaluate' })
           }
         })
       

@@ -127,31 +127,31 @@ export default {
   methods: {
     addQuestion() {
       this.evaluate.question.push({
-          text: '',
-          grade: null,
-          options: [
-            {
-              option_text: '',
-              is_correct: false
-            },
-            {
-              option_text: '',
-              is_correct: false
-            },
-            {
-              option_text: '',
-              is_correct: false
-            },
-            {
-              option_text: '',
-              is_correct: false
-            },
-            {
-              option_text: '',
-              is_correct: false
-            },
-          ]
-        })
+        text: '',
+        grade: null,
+        options: [
+          {
+            option_text: '',
+            is_correct: false
+          },
+          {
+            option_text: '',
+            is_correct: false
+          },
+          {
+            option_text: '',
+            is_correct: false
+          },
+          {
+            option_text: '',
+            is_correct: false
+          },
+          {
+            option_text: '',
+            is_correct: false
+          },
+        ]
+      })
     },
     submitForm() {
       this.validForm()
@@ -165,15 +165,27 @@ export default {
           this.$http.patch(`evaluate/${this.$route.params.id}`, this.evaluate)
             .then(res => {
               if (res.status === 200) {
-                alert('Avaliação editada com sucesso')
+                this.$swal({
+                  icon: 'success',
+                  title: 'Avaliação editada com sucesso'
+                })
                 this.$router.push({ name: 'evaluate' })
               }
+            })
+            .catch(err => {
+              this.$swal({
+                icon: 'error',
+                title: err
+              })
             })
         } else {
           this.$http.post('evaluate', this.evaluate)
             .then(res => {
               if (res.status === 201) {
-                alert('Avaliação cadastrada com sucesso')
+                this.$swal({
+                  icon: 'success',
+                  title: 'Avaliação cadastrada com sucesso'
+                })
                 this.$router.push({ name: 'evaluate' })
               }
             })

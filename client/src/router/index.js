@@ -6,6 +6,7 @@ import Evaluate from '../views/evaluate/Evaluate.vue'
 import FormEvaluate from '../views/evaluate/FormEvaluate.vue'
 import AnswerEvaluate from '../views/evaluate/AnswerEvaluate.vue'
 import store from '@/store'
+import api from '@/plugins/axios'
 
 Vue.use(VueRouter)
 
@@ -54,15 +55,20 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const isLogged = store.getters.userIsLogged
+  api.defaults.headers.common.Authorization = isLogged !== '' ? `Bearer ${isLogged}` : ''
   if (to.matched.some(record => record.meta.logged)) {
     if (isLogged) {
       next()
     } else {
       next({ name: 'home' })
     }
-  } else {
-    next()
-  }
+  } else if (to.name === 'home') {
+    if (from.path === '/') {
+      if (isLogged) {
+        next({ name: 'evaluate' })
+      } else next()
+    } else next()
+  } else next()
 })
 
 export default router

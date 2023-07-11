@@ -53,13 +53,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.demarco-checkbox {
-  .checkbox-label {
-    margin-bottom: 8px;
-  }
-  input {
-    width: 20px;
-    height: 20px;
-  }
-}
+@import '@/assets/scss/components/_checkbox.scss';
 </style>

@@ -31,16 +31,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-button {
-  padding: 6px 12px;
-  border-radius: 4px;
-  border: 1px solid #000;
-  cursor: pointer;
-}
-.login-button {
-  width: 100%;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-top: 12px;
-}
+@import '@/assets/scss/components/_button.scss';
 </style>
