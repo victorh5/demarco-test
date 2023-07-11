@@ -17,7 +17,7 @@
       <tr v-for="evaluate in evaluations" :key="evaluate._id">
         <td>{{ evaluate.title }}</td>
         <td>{{ evaluate.question.length }}</td>
-        <td v-if="!$store.getters.userIsStudent">{{ evaluate.student_answers.length }}</td>
+        <td v-if="!$store.getters.userIsStudent">{{ evaluate.answers.length }}</td>
         <td>{{ evaluate.total_grade }}</td>
         <td style="display: flex; gap: 8px;">
           <demarco-button @callback="handleEdit(evaluate._id)" v-if="!$store.getters.userIsStudent">Editar</demarco-button>

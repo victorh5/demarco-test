@@ -35,6 +35,7 @@ import DemarcoButton from '@/components/DemarcoButton.vue'
 export default {
   components: { DemarcoButton },
   data: () => ({
+    evaluateId: '',
     errors: [],
     evaluate: {},
     answers: []
@@ -48,12 +49,13 @@ export default {
     }
   },
   mounted() {
-    this.$http.get(`evaluate/${this.$route.params.id}`)
+    this.evaluateId = this.$route.params.id
+    this.$http.get(`evaluate/${this.evaluateId}`)
       .then(res => {
         if (res.status === 200) {
           this.evaluate = res.data
           this.evaluate.question.forEach(() => this.answers.push(''))
-          }
+        }
       })
   },
   methods: {
@@ -70,10 +72,24 @@ export default {
         })
       })
       const totalGrade = getTotalGrade(aux)
-      this.$swal({
-        icon: 'success',
-        title: `Sua nota foi: ${totalGrade}`
-      })
+      let arrayData = [
+        ...this.evaluate.answers,
+        {
+          user: this.$store.getters.user,
+          user_grade: totalGrade
+        }
+      ]
+      this.$http.patch(`evaluate/${this.evaluateId}`, { answers: arrayData })
+        .then(res => {
+          if (res.status === 200) {
+            this.$swal({
+              icon: 'success',
+              title: 'Respostas submetidas',
+              text: `Nesta avaliação sua nota foi: ${totalGrade}! Obrigado por realizar a avaliação...`
+            })
+          }
+        })
+      
     }
   }
 }

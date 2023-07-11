@@ -80,7 +80,7 @@ export default {
     evaluate: {
       title: null,
       total_grade: null,
-      student_answers: [],
+      answers: [],
       question: [
         {
           text: '',
