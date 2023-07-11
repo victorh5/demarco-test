@@ -2,7 +2,7 @@
 
 ### esse é meu teste para a vaga full-stack da Demarco.
 
-Vou deixar abaixo o passo a passo para rodar localmente o projeto, caso queira acessar em ambiente de teste bastar acessar o link a seguir: [Teste]('https://demarco-test-8398698c1bf5.herokuapp.com/')
+Vou deixar abaixo o passo a passo para rodar localmente o projeto, caso queira acessar em ambiente de teste bastar acessar o link a seguir: (Teste)['https://demarco-test-8398698c1bf5.herokuapp.com/']
 
 ### Passo a passo instalação:
 
