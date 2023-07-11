@@ -5,9 +5,13 @@ import { join } from 'path';
 import { UsersModule } from './users/users.module';
 import { EvaluateModule } from './evaluate/evaluate.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client/dist'),
     }),
