@@ -21,4 +21,7 @@ export class AuthService {
       access_token: await this.jwtService.signAsync(payload),
     };
   }
+  async profile(email: string): Promise<any> {
+    return await this.usersService.findByEmail(email);
+  }
 }
