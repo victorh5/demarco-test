@@ -15,6 +15,11 @@ type Question = {
   options: Option[];
 };
 
+type Answers = {
+  user: User;
+  user_grade: number;
+};
+
 @Schema()
 export class Evaluate {
   @Prop()
@@ -23,8 +28,15 @@ export class Evaluate {
   total_grade: number;
   @Prop()
   question: Question[];
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
-  student_answers?: User[];
+  @Prop({
+    type: [
+      {
+        user_grade: Number,
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+      },
+    ],
+  })
+  answers?: Answers[];
 }
 
 export const EvaluateSchema = SchemaFactory.createForClass(Evaluate);

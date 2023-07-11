@@ -13,6 +13,11 @@ type Question = {
   options: Option[];
 };
 
+type Answers = {
+  user: User;
+  user_grade: number;
+};
+
 export class CreateEvaluateDto extends Evaluate {
   @IsString()
   title: string;
@@ -21,5 +26,5 @@ export class CreateEvaluateDto extends Evaluate {
   @IsArray()
   question: Question[];
   @IsArray()
-  student_answers?: User[];
+  answers?: Answers[];
 }
